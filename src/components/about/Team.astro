@@ -1,0 +1,220 @@
+---
+import { Image } from 'astro:assets';
+import Icon from '../Icon.astro';
+import { PEOPLE } from '../../data/site';
+import andersPhoto from '../../assets/images/team-anders.avif';
+import elinPhoto from '../../assets/images/team-elin.avif';
+
+const { anders, elin } = PEOPLE;
+---
+
+<section id="team" class="team" aria-labelledby="team-heading">
+  <div class="container team__inner">
+    <h2 id="team-heading" class="t-h2 team__heading" data-reveal="fade" data-reveal-delay="0.4">Vilka är vi</h2>
+
+    <article class="person">
+      <div class="person__photo">
+        <Image
+          src={andersPhoto}
+          alt="Eldre mann med briller, grått hår og skjegg, iført mørk genser og lys skjorte."
+          class="person__img"
+          widths={[500, andersPhoto.width]}
+          sizes="(max-width: 604px) 100vw, 604px"
+          format="avif"
+          data-reveal="fade"
+          data-reveal-delay="0.4"
+        />
+      </div>
+      <div class="person__content">
+        <div class="person__text">
+          <h3 class="t-h3" data-reveal="fade" data-reveal-delay="0.4">{anders.name}</h3>
+          <div class="t-body person__bio" data-reveal="fade" data-reveal-delay="0.5">
+            <p>
+              Anders Kumlin har levt ett helt liv i fuktbranschen och har på många sätt varit drivande för den utveckling som skett. Han
+              grundade 1990 AK-konsult, men är sedan några år tillbaka verksam som Anders Kumlin AB.
+            </p>
+            <p>
+              Tilldelades 2025 Byggstenen, SBR Byggingenjörernas årliga utmärkelse till den eller de som gjort en föredömlig insats för
+              byggandet eller förvaltandet i Norden med följande motivering:
+            </p>
+            <blockquote>
+              <p>
+                ”Anders Kumlin har sedan 1980-talet brunnit för att öka kunskapen om fukt för att säkerställa god inomhusmiljö och verka för
+                en hållbar byggindustri avseende miljö och ekonomi. Anders arbete har varit starkt bidragande till den utveckling vi ser inom
+                branschen med förebyggande arbete inom fuktprojektering och med fackmässiga utredningar av uppkomna fuktskador. Han är en
+                mycket uppskattad föreläsare men även som konsult ute i fält och i sitt nära samarbete med byggindustrin."
+              </p>
+            </blockquote>
+          </div>
+        </div>
+        <ul role="list" class="person__contacts" data-reveal="fade" data-reveal-delay="0.6" aria-label={`Kontakta ${anders.name}`}>
+          {
+            anders.links.map((l) => (
+              <li>
+                <a href={l.href} class="person__link">
+                  <Icon name={l.kind} class="person__icon" />
+                  <span class="t-small person__link-text">{l.label}</span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </article>
+
+    <article class="person person--reverse">
+      <div class="person__content">
+        <div class="person__text">
+          <h3 class="t-h3" data-reveal="fade" data-reveal-delay="0.4">{elin.name}</h3>
+          <div class="t-body person__bio" data-reveal="fade" data-reveal-delay="0.5">
+            <p>
+              Elin är byggingenjör och har flerårig erfarenhet av att arbeta med fuktsäkerhet i både projektering och förvaltning. Med ett
+              systematiskt och analytiskt arbetssätt fokuserar hon på att identifiera risker, optimera lösningar och säkerställa långsiktigt
+              hållbara byggnader.
+            </p>
+            <div>
+              <p>Hennes kompetens omfattar bland annat:</p>
+              <ul role="list" class="person__skills">
+                <li>Fuktsäkerhetsprojektering</li>
+                <li>Riskanalyser</li>
+                <li>Skadeutredningar</li>
+                <li>Skyfallsutredningar och simuleringar</li>
+              </ul>
+            </div>
+            <p>
+              Hon arbetar strukturerat, noggrant och med stor förståelse för helheten i byggprocessen – från tidiga skeden till färdig
+              byggnad. Med ett vetenskapligt förankrat arbetssätt strävar hon efter att varje lösning ska vara både funktionell och hållbar
+              över tid.
+            </p>
+          </div>
+        </div>
+        <ul role="list" class="person__contacts" data-reveal="fade" data-reveal-delay="0.6" aria-label={`Kontakta ${elin.name}`}>
+          {
+            elin.links.map((l) => (
+              <li>
+                <a href={l.href} class="person__link">
+                  <Icon name={l.kind} class="person__icon" />
+                  <span class="t-small person__link-text">{l.label}</span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div class="person__photo">
+        <Image
+          src={elinPhoto}
+          alt="Portrett av kvinne med blondt hår og blå øyne foran en lys bakgrunn."
+          class="person__img"
+          widths={[500, elinPhoto.width]}
+          sizes="(max-width: 604px) 100vw, 604px"
+          format="avif"
+          data-reveal="fade"
+          data-reveal-delay="0.6"
+        />
+      </div>
+    </article>
+  </div>
+</section>
+
+<style>
+  .team {
+    position: relative;
+  }
+  .team__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-64-40);
+    padding-block: var(--pad-120);
+  }
+  .team__heading {
+    color: var(--color-heading);
+  }
+
+  .person {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: start stretch;
+    gap: clamp(1.5rem, -6.25rem + 12.5vw, 5rem);
+    width: 100%;
+  }
+  .person__photo {
+    width: 100%;
+    height: 480px;
+    overflow: hidden;
+    border-radius: 32px;
+  }
+  .person__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .person__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+  }
+  .person__text {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  /* Paragraph breaks were <br><br> in the original — one blank line */
+  .person__bio > * + * {
+    margin-top: 1.5em;
+  }
+  .person__bio blockquote {
+    margin: 0;
+  }
+  .person__skills li::before {
+    content: '- ';
+  }
+
+  .person__contacts {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 24px;
+    padding: 16px 24px;
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    background-color: var(--color-surface);
+  }
+  .person__link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-heading);
+    text-decoration: none;
+    transition: color 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+  .person__link:hover {
+    color: var(--color-primary);
+  }
+  .person__icon {
+    width: 24px;
+    height: 24px;
+    color: var(--color-primary);
+  }
+  .person__link-text {
+    color: inherit;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 767px) {
+    .person {
+      display: flex;
+      flex-direction: column;
+    }
+    .person__photo {
+      order: -1;
+    }
+  }
+  @media (max-width: 479px) {
+    .person__photo {
+      height: 320px;
+    }
+  }
+</style>

@@ -1,0 +1,245 @@
+[
+  {
+    "id": "doc-1",
+    "order": 1,
+    "title": "Återvinning",
+    "summary": "Cirkulära materialflöden är viktiga för klimatet, men kan dölja \"ärvda\" problem som fuktskador, mikrober och gamla miljögifter. Elin Kumlin, Anders Kumlin och Erica Bloom förklarar varför spårbarhet och fuktkontroll är avgörande för att inte flytta innemiljöproblem från en byggnad till en annan.",
+    "authors": "Elin Kumlin, Anders Kumlin & Erica Bloom",
+    "year": 2026,
+    "pdf": "https://kumlin.nettsidetjenester.no/doc-1.pdf"
+  },
+  {
+    "id": "doc-2",
+    "order": 2,
+    "title": "Snö och snösmältning i klimatanpassning",
+    "summary": "Extrema snöfall kan motsvara ett 100-årsregn i vattenvolym men med fördröjd belastning. För fuktsäker projektering måste snö och snösmältning integreras i skyfallsanalysen, eftersom hydrologiska modeller ofta underskattar snöns kraftfulla påverkan på byggnader.",
+    "authors": "Karolina Jernelid & Elin Kumlin",
+    "year": 2026,
+    "pdf": "https://kumlin.nettsidetjenester.no/doc-2.pdf"
+  },
+  {
+    "id": "doc-3",
+    "order": 3,
+    "title": "Slagregn",
+    "summary": "Större fogbredd mellan fasadskivor ökar risken för vatteninträngning och fuktskador bakom fasaden, vilket gör noggrant utförande, materialval och hänsyn till lokala förhållanden avgörande för byggnadens hållbarhet och fuktsäkerhet.",
+    "authors": "Anders Kumlin, Elin Kumlin, Karolina Jernelid",
+    "year": 2025,
+    "pdf": "https://kumlin.nettsidetjenester.no/doc-3.pdf"
+  },
+  {
+    "id": "doc-4",
+    "order": 4,
+    "title": "Examensarbete",
+    "summary": "Studien visar att felaktig tolkning av sorptionsmekanismer i organiska byggmaterial kan leda till missvisande bedömningar av fuktrisk och mögeltillväxt.",
+    "authors": "Maja Wennerström",
+    "year": 2025,
+    "pdf": "https://kumlin.nettsidetjenester.no/doc-4.pdf"
+  },
+  {
+    "id": "doc-11",
+    "order": 5,
+    "title": "Hur tryggt står du?",
+    "summary": "Byggnadens resiliens mot skyfall och andra klimatpåverkningar. Med ett förändrat klimat behöver vi tänka på fuktsäkerhet ur ett bredare perspektiv.",
+    "authors": "Karolina Jernelid & Elin Kumlin",
+    "year": 2025,
+    "pdf": "https://kumlin.nettsidetjenester.no/doc-11.pdf"
+  },
+  {
+    "id": "doc-15",
+    "order": 6,
+    "title": "Skyfall anpassning av fastigheter till en ny tid",
+    "summary": "Den globala uppvärmningen påverkar självklart klimatet i Sverige och förändringarna påverkar såväl företag och organisationer som enskilda privatpersoner.",
+    "authors": "Karolina Jernelid & Elin Kumlin",
+    "year": 2024,
+    "pdf": "https://kumlin.nettsidetjenester.no/doc-15.pdf"
+  },
+  {
+    "id": "doc-8",
+    "order": 7,
+    "title": "Innemiljö - så mycket mera än komfort",
+    "summary": "Begreppet innemiljö kan tolkas på många olika sätt. Ljud, ljus och värme är en aspekt men väl så viktig är byggnadens fukt säkerhet och hur den kan påverka människan och inomhusmiljön.",
+    "authors": "Karolina Jernelid & Elin Kumlin",
+    "year": 2024,
+    "pdf": "https://kumlin.nettsidetjenester.no/doc-8.pdf"
+  },
+  {
+    "id": "doc-14",
+    "order": 8,
+    "title": "Hållbarhet",
+    "summary": "Baserat på uppgifter från Boverket så motsvarar den årliga kostnaden relaterade till fuktskador i byggsektorn ungefär en årsbudget för försvaret.",
+    "authors": "Karolina Jernelid & Elin Kumlin",
+    "year": 2025,
+    "pdf": "https://kumlin.nettsidetjenester.no/doc-14.pdf"
+  },
+  {
+    "id": "doc-7",
+    "order": 9,
+    "title": "Dags att bredda synen på fuktsäkerhet",
+    "summary": "Att fukt skapar problem och resulterar i såväl ekonomiska kostnader, miljöpåverkan och risk för hälsoproblem torde idag vara allmänt känt",
+    "authors": "Anders Kumlin, Elin Kumlin, Karolina Jernelid & Peter Carlsson",
+    "year": 2024,
+    "pdf": "https://kumlin.nettsidetjenester.no/doc-7.pdf"
+  },
+  {
+    "id": "doc-12",
+    "order": 10,
+    "title": "Fuktskador i byggnader",
+    "summary": "Boverkets byggregler är tydliga; byggnader ska utformas så att fukt inte kan påverka hygien eller hälsa. Vad menas med begreppet ”fuktiga byggnader”?",
+    "authors": "Anders Kumlin, Dan Norbäck & Elin Kumlin",
+    "year": 2023,
+    "pdf": "https://kumlin.nettsidetjenester.no/doc-12.pdf"
+  },
+  {
+    "id": "doc-17",
+    "order": 11,
+    "title": "Fuktmätning i betong",
+    "summary": "Fuktmätning i betong påverkas av mätdjup, torkklimat, materialets sorptionskurva och hystereseffekter, där beräkningar visar att det rekommenderade mätdjupet oftast ligger på den säkra sidan.",
+    "authors": "Anders Kumlin",
+    "year": 2015,
+    "pdf": "https://kumlin.nettsidetjenester.no/doc-17.pdf"
+  },
+  {
+    "id": "doc-26",
+    "order": 12,
+    "title": "Emission från betong– ett innemiljöproblem?",
+    "summary": "I Sverige har vi erfarenheter från två typer av fuktrelaterade emissioner från betongbjälklag.",
+    "authors": "Anders Kumlin & Ingrid Johansson",
+    "year": 2014,
+    "pdf": "https://kumlin.nettsidetjenester.no/doc-26.pdf"
+  },
+  {
+    "id": "doc-23",
+    "order": 13,
+    "title": "Fuktprojektering",
+    "summary": "Fuktsäkerhetsprojektering innebär att systematiskt hantera fuktfrågor genom hela byggprocessen – från gestaltning till förvaltning – med metoder som ByggaF för att skapa hållbara och fuktsäkra byggnader.",
+    "authors": "Anders Kumlin & Lars-Olof Åkerlind",
+    "year": 2013,
+    "pdf": "https://kumlin.nettsidetjenester.no/doc-23.pdf"
+  },
+  {
+    "id": "doc-6",
+    "order": 14,
+    "title": "Innemiljöproblem",
+    "summary": "Fuktskador/inomhusmiljöproblem som kan uppstå i samband med ombyggnad/uppdatering av byggnader.",
+    "authors": "Anders Kumlin, Peter Carlsson & Anders Joelsson",
+    "year": 2013,
+    "pdf": "https://kumlin.nettsidetjenester.no/doc-6.pdf"
+  },
+  {
+    "id": "doc-18",
+    "order": 15,
+    "title": "Fuktproblem",
+    "summary": "Fuktproblem i simhallar och andra byggnader med hög fuktbelastning.",
+    "authors": "Anders Kumlin",
+    "year": 2012,
+    "pdf": "https://kumlin.nettsidetjenester.no/doc-18.pdf"
+  },
+  {
+    "id": "doc-5",
+    "order": 16,
+    "title": "Fuktkonsekvenser",
+    "summary": "Ommanjämför en äldre byggnad med lågt värmemotstånd i klimatskärmen med en ny byggnad med större värmemotstånd, lägre U-värde, framträder två huvudsakliga skillnader.",
+    "authors": "Anders Kumlin",
+    "year": 2012,
+    "pdf": "https://kumlin.nettsidetjenester.no/doc-5.pdf"
+  },
+  {
+    "id": "doc-24",
+    "order": 17,
+    "title": "Fuktproblem i sockellösa ytterväggar",
+    "summary": "Under de två senaste åren har ett flertal fall med fukt- och mikrobiella skador i nedre del av putsade fasader på träregelstommar uppmärksammasts av AK-konsult.",
+    "authors": "Anders Kumlin, Tero Toriseva & Peter Carlsson,",
+    "year": 2011,
+    "pdf": "https://kumlin.nettsidetjenester.no/doc-24.pdf"
+  },
+  {
+    "id": "doc-27",
+    "order": 18,
+    "title": "Lufttäta hus är fuktsäkra hus",
+    "summary": "I den allmänna debatten hör man inte alltför sällan, att orsaken till att hus drabbas av fuktproblem, är att husen är för täta; ”det är plastfoliens fel”, ”hus ska andas” etcetera. Hur fungerar det egentligen?",
+    "authors": "Anders Kumlin",
+    "year": 2010,
+    "pdf": "https://kumlin.nettsidetjenester.no/doc-27.pdf"
+  },
+  {
+    "id": "doc-25",
+    "order": 19,
+    "title": "Fuktteknisk status",
+    "summary": "Under de två senaste åren har ett flertal fall med fukt- och mikrobiella skador i nedre del av putsade fasader på träregelstommar uppmärksammasts av AK-konsult.",
+    "authors": "Anders Kumlin",
+    "year": 2010,
+    "pdf": "https://kumlin.nettsidetjenester.no/doc-25.pdf"
+  },
+  {
+    "id": "doc-19",
+    "order": 20,
+    "title": "Parallelltak",
+    "summary": "Mögelrisk i förhållande till fuktnivå, temperatur och varaktighet",
+    "authors": "Anders Kumlin",
+    "year": 2009,
+    "pdf": "https://kumlin.nettsidetjenester.no/doc-19.pdf"
+  },
+  {
+    "id": "doc-21",
+    "order": 21,
+    "title": "Högsta tillåtna fukttillstånd",
+    "summary": "I Boverkets byggregler (BBR-06) anges att fukttillståndet i en byggnadsdel alltid ska vara lägre än det högsta tillåtna fukttillståndet.",
+    "authors": "Anders Kumlin",
+    "year": 2008,
+    "pdf": "https://kumlin.nettsidetjenester.no/doc-21.pdf"
+  },
+  {
+    "id": "doc-22",
+    "order": 22,
+    "title": "Fuktberäkning, del 2",
+    "summary": "I Bygg & teknik nummer 2/08 redovisade Mathias Lindskog grundläggande fuktbegrepp samt visade hur en stationär fuktberäkning över en konstruktion kan utföras.",
+    "authors": "Anders Kumlin",
+    "year": 2008,
+    "pdf": "https://kumlin.nettsidetjenester.no/doc-22.pdf"
+  },
+  {
+    "id": "doc-20",
+    "order": 23,
+    "title": "Putsade oventilerade och odränerade träregelväggar",
+    "summary": "Putsad oventilerad och odränerad träregelvägg är en vanlig och på senare tid en skadedrabbad ytterväggskonstruktion.",
+    "authors": "Anders Kumlin",
+    "year": 2007,
+    "pdf": "https://kumlin.nettsidetjenester.no/doc-20.pdf"
+  },
+  {
+    "id": "doc-13",
+    "order": 24,
+    "title": "Fuktskydd av betongplattor på mark",
+    "summary": "Fuktskydd av en betongplatta på mark åstadkoms idag oftast genom att placera en värmeisolering under betongplattan.",
+    "authors": "Anders Kumlin & Johan Tannfors",
+    "year": 2006,
+    "pdf": "https://kumlin.nettsidetjenester.no/doc-13.pdf"
+  },
+  {
+    "id": "doc-10",
+    "order": 25,
+    "title": "Fuktproblem i simhallar",
+    "summary": "Det är inte helt ovanligt att simhallar drabbas av fuktproblem. Enligt vår erfarenhet är en gemensam faktor för de simhallar som drabbas av fuktproblem att vatten- och lufttemperaturen är hög.",
+    "authors": "Anders Kumlin & Niclas Wahl",
+    "year": 2004,
+    "pdf": "https://kumlin.nettsidetjenester.no/doc-10.pdf"
+  },
+  {
+    "id": "doc-9",
+    "order": 26,
+    "title": "Övervakning av inomhusmiljö vid fuktsanering",
+    "summary": "För att nå ett önskat resultat, dvs friska brukare, vid åtgärd i en byggnad med inomhusmiljöproblem är det av största vikt att inomhusmiljöaspekterna bevakas under hela åtgärdsskedet.",
+    "authors": "Anders Kumlin & Mathias Stenström",
+    "year": 2002,
+    "pdf": "https://kumlin.nettsidetjenester.no/doc-9.pdf"
+  },
+  {
+    "id": "doc-16",
+    "order": 27,
+    "title": "”Fuktiga byggnader” och sanering av fuktskadade byggnader",
+    "summary": "Idag tillbringar vi 85–90 procent av vår tid inomhus. Detta förhållande gör att inomhusmiljön får en stor betydelse när det gäller den totala miljöbelastningen på människan.",
+    "authors": "Anders Kumlin",
+    "year": 2000,
+    "pdf": "https://kumlin.nettsidetjenester.no/doc-16.pdf"
+  }
+]

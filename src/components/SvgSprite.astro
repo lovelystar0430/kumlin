@@ -1,0 +1,22 @@
+---
+/**
+ * Inline SVG sprite, rendered once per page by BaseLayout. Icons are referenced
+ * with <Icon name="…" />. This replaces Webflow's per-instance inline SVGs: the
+ * 35 KB logo was duplicated in nav + footer, and the document icon repeated the
+ * same mask id 27 times on /artikler (invalid HTML).
+ */
+import logo from '../assets/icons/logo.svg?raw';
+import phone from '../assets/icons/phone.svg?raw';
+import mail from '../assets/icons/mail.svg?raw';
+import file from '../assets/icons/file.svg?raw';
+
+const symbol = (id: string, raw: string) => {
+  const viewBox = raw.match(/viewBox="([^"]+)"/)?.[1] ?? '0 0 24 24';
+  const inner = raw.replace(/^[\s\S]*?<svg[^>]*>/, '').replace(/<\/svg>\s*$/, '');
+  return `<symbol id="icon-${id}" viewBox="${viewBox}" fill="none">${inner}</symbol>`;
+};
+
+const sprite = [symbol('logo', logo), symbol('phone', phone), symbol('mail', mail), symbol('file', file)].join('');
+---
+
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden" set:html={sprite} />

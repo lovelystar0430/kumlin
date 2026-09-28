@@ -1,0 +1,138 @@
+---
+import { Image } from 'astro:assets';
+import kumlinAb from '../../assets/images/logo-kumlin-ab.avif';
+import kumlinAs from '../../assets/images/logo-kumlin-as.avif';
+import ekab from '../../assets/images/logo-ekab.avif';
+import andersKumlinAb from '../../assets/images/logo-anders-kumlin-ab.avif';
+
+// Alt text is the company name; the original described the logo artwork in Norwegian.
+const companies = [
+  { name: 'Kumlin Fuktdimensionering AB', logo: kumlinAb, compact: false },
+  { name: 'Kumlin Fuktdimensjonering AS', logo: kumlinAs, compact: false },
+  { name: 'EKAB', logo: ekab, compact: true },
+  { name: 'Anders Kumlin AB', logo: andersKumlinAb, compact: false },
+];
+---
+
+<section class="group-header" aria-labelledby="group-heading">
+  <div class="container group-header__inner">
+    <div class="group-header__intro">
+      <h1 id="group-heading" class="t-h1 group-header__heading">Kumlingruppen</h1>
+      <p class="t-body-lg group-header__lead">Kumlin-gruppen är en liten kompetent koncernen och består av 4 bolag.</p>
+    </div>
+    <ul role="list" class="group-header__logos">
+      {
+        companies.map((c) => (
+          <li class="group-header__logo">
+            <Image
+              src={c.logo}
+              alt={c.name}
+              class:list={['group-header__logo-img', { 'group-header__logo-img--compact': c.compact }]}
+              widths={[240, 480]}
+              sizes="(max-width: 767px) 40vw, 240px"
+              format="avif"
+            />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .group-header {
+    position: relative;
+  }
+  .group-header__inner {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2rem, 1.429rem + 2.857vw, 4rem);
+    padding-top: var(--pad-240);
+    padding-bottom: var(--pad-120);
+  }
+  .group-header__intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+  }
+  .group-header__heading {
+    color: var(--color-heading);
+  }
+  .group-header__lead {
+    color: var(--color-text);
+  }
+  .group-header__logos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .group-header__logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1;
+    padding: 40px;
+    overflow: hidden;
+    border: 2px solid var(--color-border);
+    border-radius: 999px;
+  }
+  .group-header__logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .group-header__logo-img--compact {
+    max-height: 96px;
+  }
+
+  /* Entrance animations (from the original Webflow embed) */
+  @media (prefers-reduced-motion: no-preference) {
+    .group-header__heading,
+    .group-header__lead,
+    .group-header__logo {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: group-fade-up 0.5s ease-out forwards;
+    }
+    .group-header__heading {
+      animation-delay: 0.3s;
+    }
+    .group-header__lead {
+      animation-delay: 0.4s;
+    }
+    .group-header__logo:nth-child(1) {
+      animation-delay: 0.5s;
+    }
+    .group-header__logo:nth-child(2) {
+      animation-delay: 0.6s;
+    }
+    .group-header__logo:nth-child(3) {
+      animation-delay: 0.7s;
+    }
+    .group-header__logo:nth-child(4) {
+      animation-delay: 0.8s;
+    }
+  }
+  @keyframes group-fade-up {
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .group-header__logos {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 479px) {
+    .group-header__heading {
+      overflow-wrap: anywhere;
+    }
+    .group-header__logo {
+      padding: 28px;
+    }
+  }
+</style>

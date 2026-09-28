@@ -1,0 +1,139 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+
+const news = (await getCollection('news')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<section class="news" aria-labelledby="news-heading">
+  <div class="container news__inner">
+    <h2 id="news-heading" class="t-h2 news__heading" data-reveal="fade" data-reveal-delay="0.4">Nyheter</h2>
+    <ul role="list" class="news__list" data-reveal="stagger" data-reveal-delay="0.5">
+      {
+        news.map(({ data }) => (
+          <li class:list={['news-card', { 'news-card--text-only': !data.image }]}>
+            {data.image && (
+              <Image src={data.image} alt={data.imageAlt ?? ''} class="news-card__img" widths={[140, 280, 560]} sizes="(max-width: 479px) 40vw, (max-width: 767px) 200px, 140px" format="avif" />
+            )}
+            <div class="news-card__content">
+              <h3 class="t-h5 news-card__title">{data.title}</h3>
+              <p class="t-body news-card__body">{data.body}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .news {
+    position: relative;
+  }
+  .news__inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-32-24);
+    padding-block: var(--pad-120);
+  }
+  .news__heading {
+    color: var(--color-heading);
+    text-align: center;
+  }
+  .news__list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .news-card {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    width: 100%;
+    max-width: 1344px;
+    margin-inline: auto;
+    padding: 8px 48px 8px 8px;
+    border: 1px solid var(--color-border);
+    border-radius: 32px;
+    background-color: var(--color-surface);
+  }
+  .news-card--text-only {
+    padding-block: 16px;
+    padding-left: 24px;
+  }
+  .news-card__img {
+    width: 140px;
+    height: 140px;
+    border-radius: 24px;
+    object-fit: cover;
+  }
+  .news-card__content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .news-card__title {
+    color: var(--color-heading);
+    text-wrap: pretty;
+  }
+  .news-card__body {
+    color: var(--color-text);
+  }
+
+  @media (max-width: 991px) {
+    .news-card {
+      padding-right: 32px;
+    }
+    .news-card--text-only {
+      padding-left: 16px;
+    }
+  }
+  @media (max-width: 767px) {
+    .news-card {
+      align-items: stretch;
+      padding-right: 24px;
+    }
+    .news-card__img {
+      height: auto;
+      min-height: 100%;
+    }
+    .news-card__content {
+      padding-block: 8px;
+    }
+  }
+  @media (max-width: 479px) {
+    .news-card {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      place-items: center start;
+      gap: 8px;
+      padding-right: 8px;
+      padding-bottom: 16px;
+    }
+    .news-card--text-only {
+      display: flex;
+      flex-wrap: wrap;
+      padding-left: 8px;
+    }
+    .news-card__content {
+      display: contents;
+    }
+    .news-card__title {
+      max-width: 200px;
+      padding-left: 8px;
+      font-size: var(--fs-body-lg);
+    }
+    .news-card--text-only .news-card__title {
+      max-width: none;
+      font-size: var(--fs-h5);
+    }
+    .news-card__body {
+      grid-column: span 2;
+      padding-inline: 8px;
+      text-wrap: balance;
+    }
+  }
+</style>

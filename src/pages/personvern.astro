@@ -1,0 +1,157 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../data/site';
+---
+
+<BaseLayout
+  title="Integritetspolicy | Kumlin"
+  description="Så samlar in, använder och skyddar Kumlingruppen dina personuppgifter. Läs om rättslig grund, lagringstid och dina rättigheter enligt GDPR."
+>
+  <section class="legal" aria-labelledby="legal-heading">
+    <div class="container legal__inner">
+      <h1 id="legal-heading" class="t-h3 legal__heading">Integritetspolicy för Kumlingruppen</h1>
+
+      <div class="legal__sections">
+        <section class="legal__card">
+          <h2><span class="accent">1.</span> Inledning</h2>
+          <p>
+            Kumlingruppen värnar om din personliga integritet. Denna integritetspolicy förklarar hur vi samlar in, använder och skyddar dina
+            personuppgifter när du besöker vår webbplats <a href="https://kumlin.no/">https://kumlin.no/</a>
+          </p>
+        </section>
+
+        <section class="legal__card">
+          <h2><span class="accent">2.</span> Personuppgiftsansvarig</h2>
+          <p>Kumlingruppen är personuppgiftsansvarig för behandlingen av de personuppgifter som beskrivs i denna policy.</p>
+          <p>Kontaktuppgifter:</p>
+          <p>Adress: {SITE.address}</p>
+          <p>E-post: <a href="mailto:elin@fuktdimensionering.se">elin@fuktdimensionering.se</a></p>
+          <p>E-post: <a href="mailto:anders@kumlin.biz">anders@kumlin.biz</a></p>
+          <p>Telefon: +46 760 224 191 (Elin)</p>
+          <p>Telefon: +46 705 167 725 (Anders)</p>
+        </section>
+
+        <section class="legal__card">
+          <h2><span class="accent">3.</span> Personuppgifter vi samlar in</h2>
+          <p>Vi samlar in följande uppgifter:</p>
+          <p>
+            Kontaktuppgifter: När du använder vårt kontaktformulär samlar vi in namn, telefonnummer och e-postadress för att kunna besvara
+            din förfrågan och följa upp den.
+          </p>
+        </section>
+
+        <section class="legal__card">
+          <h2><span class="accent">4.</span> Ändamål med behandlingen</h2>
+          <p>Vi behandlar dina personuppgifter för att hantera frågor och förfrågningar som skickas via kontaktformuläret på webbplatsen.</p>
+        </section>
+
+        <section class="legal__card">
+          <h2><span class="accent">5.</span> Rättslig grund för behandlingen</h2>
+          <p>
+            Uppgifter från kontaktformuläret behandlas med stöd av ditt samtycke, som lämnas när du skickar in formuläret. Du kan när som
+            helst återkalla ditt samtycke genom att kontakta oss.
+          </p>
+        </section>
+
+        <section class="legal__card">
+          <h2><span class="accent">6.</span> Lagring av personuppgifter</h2>
+          <p>
+            Informationen från kontaktformuläret lagras endast så länge det är nödvändigt för att besvara din förfrågan och eventuellt följa
+            upp den.
+          </p>
+        </section>
+
+        <section class="legal__card">
+          <h2><span class="accent">7.</span> Dina rättigheter</h2>
+          <p>Du har rätt att:</p>
+          <ul role="list">
+            <li>Få tillgång till de personuppgifter vi har lagrade om dig.</li>
+            <li>Begära rättelse eller radering av felaktiga uppgifter.</li>
+            <li>Begära att uppgifter som inte längre är nödvändiga raderas.</li>
+            <li>Begära begränsning av behandlingen under vissa omständigheter.</li>
+            <li>Invända mot behandlingen.</li>
+            <li>Begära dataportabilitet av de uppgifter du själv lämnat till oss.</li>
+          </ul>
+          <p>För att utöva dina rättigheter, kontakta oss via kontaktuppgifterna i punkt 2.</p>
+        </section>
+
+        <!-- Numbering jumps from 7 to 9 in the original policy; kept as-is pending the owner's review. -->
+        <section class="legal__card">
+          <h2><span class="accent">9.</span> Informationssäkerhet</h2>
+          <p>
+            Vi vidtar nödvändiga tekniska och organisatoriska åtgärder för att skydda dina personuppgifter mot obehörig åtkomst, ändring
+            eller radering.
+          </p>
+        </section>
+
+        <section class="legal__card">
+          <h2><span class="accent">10.</span> Ändringar i integritetspolicyn</h2>
+          <p>Denna policy kan komma att uppdateras vid behov. Uppdaterad version publiceras alltid på denna sida.</p>
+        </section>
+
+        <section class="legal__card">
+          <h2><span class="accent">11.</span> Klagomål</h2>
+          <p>
+            Om du anser att vi behandlar dina personuppgifter felaktigt har du rätt att lämna in ett klagomål till Integritetsskyddsmyndigheten
+            (IMY), <a href="https://www.imy.se">www.imy.se</a>
+          </p>
+        </section>
+
+        <section class="legal__card">
+          <h2><span class="accent">12.</span> Teknisk support</h2>
+          <p>För tekniska frågor om webbplatsen, vänligen kontakta:</p>
+          <p>E-post: <a href="mailto:haakon@nettsidetjenester.no">haakon@nettsidetjenester.no</a></p>
+          <p>Webbplats: <a href="https://www.nettsidetjenester.no">www.nettsidetjenester.no</a></p>
+        </section>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .legal {
+    position: relative;
+  }
+  .legal__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-48-32);
+    padding-top: var(--pad-240);
+    padding-bottom: var(--pad-120);
+  }
+  .legal__heading {
+    color: var(--color-heading);
+    text-align: center;
+  }
+  .legal__sections {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-24-16);
+    width: 100%;
+  }
+  .legal__card {
+    padding: var(--space-32-24);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-32-20);
+    background-color: var(--color-surface);
+  }
+  .legal__card h2 {
+    margin-bottom: clamp(0.75rem, 0.679rem + 0.357vw, 1rem);
+    color: var(--color-heading);
+    font-family: var(--font-display);
+    font-size: var(--fs-h5);
+    font-weight: 700;
+    line-height: 130%;
+  }
+  .legal__card :is(p, li) {
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: var(--fs-body);
+    font-weight: 400;
+    line-height: 140%;
+  }
+  .legal__card a {
+    color: var(--color-text);
+  }
+</style>

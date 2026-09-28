@@ -1,0 +1,16 @@
+[
+  {
+    "id": "exjobb-kth",
+    "order": 1,
+    "title": "Fuktrelaterade exjobb",
+    "body": "Även i år handleder vi ett antal fuktrelaterade exjobb på KTH. Exjobben, som är på kandidatnivå, presenteras den 26 maj och behandlar aktuella och viktiga frågeställningar inom fuktsäkerhet, byggnadsfysik och hållbart byggande. Ta kontakt om du önskar mer information!"
+  },
+  {
+    "id": "byggstenen-anders",
+    "order": 2,
+    "title": "Grattis Anders – mottagare av Byggstenen 2024!",
+    "body": "Vi är glada att kunna meddela att Anders tilldelades Byggstenen förra året för sina enastående insatser och engagemang. Stort grattis!",
+    "image": "../assets/images/news-anders-byggstenen.avif",
+    "imageAlt": "Mann med grått hår, skjegg og briller står foran en bygning med rødt tak i sollys."
+  }
+]

@@ -1,0 +1,172 @@
+---
+import Icon from './Icon.astro';
+import { FOOTER_CONTACTS, FOOTER_LINKS, SITE } from '../data/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <div class="site-footer__top">
+      <div class="site-footer__brand">
+        <a href="/" class="site-footer__logo">
+          <Icon name="logo" label="Kumlin – till startsidan" class="site-footer__logo-svg" />
+        </a>
+        <p class="t-body site-footer__muted">{SITE.tagline}</p>
+      </div>
+
+      <nav class="site-footer__col" aria-labelledby="footer-nav-heading">
+        <h2 id="footer-nav-heading" class="t-h5 site-footer__heading">Navigering</h2>
+        <ul role="list" class="site-footer__list">
+          {
+            FOOTER_LINKS.map((link) => (
+              <li>
+                <a href={link.href} class="t-body site-footer__link">{link.label}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <div class="site-footer__col">
+        <!-- Heading text kept from the original ("Navigering"); this column holds contact details. -->
+        <h2 class="t-h5 site-footer__heading">Navigering</h2>
+        <ul role="list" class="site-footer__list">
+          {
+            FOOTER_CONTACTS.map((c) => (
+              <li>
+                <a href={c.href} class="t-body site-footer__link">
+                  <Icon name={c.kind} class="site-footer__icon" />
+                  <span>{c.label}</span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+
+    <div class="site-footer__bottom">
+      <p class="t-body site-footer__muted">Copyright © {year} Kumlin. All rights reserved</p>
+      <a href="/personvern" class="t-body site-footer__link">Integritetspolicy</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    position: relative;
+    background-color: var(--color-primary);
+  }
+  .site-footer__inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-80-48);
+    padding-top: var(--pad-80);
+    padding-bottom: var(--pad-24);
+  }
+  .site-footer__top {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr;
+    gap: 32px;
+  }
+  .site-footer__brand {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 432px;
+  }
+  .site-footer__logo {
+    display: block;
+    width: 300px;
+    max-width: 100%;
+    height: 64px;
+    color: var(--color-bg);
+    transition: color 0.3s;
+  }
+  .site-footer__logo:hover {
+    color: var(--color-border);
+  }
+  .site-footer__logo-svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .site-footer__muted {
+    color: var(--color-on-primary-muted);
+  }
+  .site-footer__col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .site-footer__heading {
+    color: var(--color-bg);
+  }
+  .site-footer__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .site-footer__link {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    color: var(--color-on-primary-muted);
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .site-footer__link:hover {
+    color: var(--color-bg);
+    text-decoration: underline;
+  }
+  .site-footer__icon {
+    flex: none;
+    width: 24px;
+    height: 24px;
+  }
+  .site-footer__bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+
+  @media (max-width: 991px) {
+    .site-footer__top {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .site-footer__col {
+      max-width: 180px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .site-footer__top {
+      flex-direction: column;
+    }
+    .site-footer__col {
+      max-width: none;
+    }
+    .site-footer__bottom {
+      gap: 8px;
+    }
+    .site-footer__bottom p {
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 479px) {
+    .site-footer__top {
+      gap: 40px;
+    }
+    .site-footer__bottom {
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+</style>

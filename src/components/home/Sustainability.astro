@@ -1,0 +1,93 @@
+---
+import { Image } from 'astro:assets';
+import vennImage from '../../assets/images/sustainability-venn.avif';
+---
+
+<section id="last" class="sustainability" aria-labelledby="sustainability-heading">
+  <div class="container sustainability__inner">
+    <div class="sustainability__content">
+      <h2 id="sustainability-heading" class="t-h2 sustainability__heading" data-reveal="fade" data-reveal-delay="0.4">Hållbarhet</h2>
+      <div class="sustainability__body" data-reveal="fade" data-reveal-delay="0.5">
+        <p class="t-body">
+          Vi arbetar för fuktsäkra och därmed hållbar byggnader genom ett aktivt fuktsäkerhetsarbete genom hela byggprocessen, från
+          idé/program till projektering, produktion, förvaltning och till slut rivning/återbruk. I detta ingår även ombyggnad av
+          existerande byggander.
+        </p>
+        <p class="t-body">Vår vision tar avstamp i att en hållbar byggnad måste vara fuktsäker.</p>
+      </div>
+    </div>
+    <div class="sustainability__media" data-reveal="grayscale" data-reveal-delay="0.6">
+      <!-- The original had alt="" although the diagram carries information. -->
+      <Image
+        src={vennImage}
+        alt="Venndiagram med Människa, Miljö och Ekonomi. Överlappen visar Acceptabel, Balanserad och Långsiktig, och i mitten: Kräver att byggnaden är fuktsäker."
+        class="sustainability__img"
+        widths={[500, 800, vennImage.width]}
+        sizes="(max-width: 767px) 100vw, 50vw"
+        format="avif"
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .sustainability {
+    position: relative;
+  }
+  .sustainability__inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-56-36);
+    padding-top: var(--pad-80);
+    padding-bottom: var(--pad-120);
+  }
+  .sustainability__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .sustainability__heading {
+    color: var(--color-heading);
+  }
+  .sustainability__body p {
+    color: var(--color-text);
+  }
+  /* The original separated these with <br><br> — one blank line. */
+  .sustainability__body p + p {
+    margin-top: 1.5em;
+  }
+  .sustainability__media {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+  }
+  .sustainability__img {
+    width: 100%;
+    height: 100%;
+    min-height: 640px;
+    border-radius: 32px;
+    object-fit: contain;
+  }
+
+  @media (max-width: 991px) {
+    .sustainability__content {
+      gap: 16px;
+    }
+  }
+  @media (max-width: 767px) {
+    .sustainability__inner {
+      flex-direction: column;
+    }
+    .sustainability__img {
+      min-height: auto;
+      max-height: 380px;
+    }
+  }
+  @media (max-width: 479px) {
+    .sustainability__img {
+      max-height: 340px;
+    }
+  }
+</style>

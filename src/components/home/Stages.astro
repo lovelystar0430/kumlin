@@ -1,0 +1,139 @@
+---
+import { Image } from 'astro:assets';
+import idea from '../../assets/images/stage-01-idea.avif';
+import design from '../../assets/images/stage-02-design.avif';
+import construction from '../../assets/images/stage-03-construction.avif';
+import management from '../../assets/images/stage-04-management.avif';
+import demolition from '../../assets/images/stage-05-demolition.avif';
+
+const stages = [
+  { number: '01/', title: 'Ide och program', image: idea },
+  { number: '02/', title: 'Design', image: design },
+  { number: '03/', title: 'Entreprenad', image: construction },
+  { number: '04/', title: 'Förvaltning', image: management },
+  { number: '05/', title: 'Rivning och återbruk', image: demolition },
+];
+---
+
+<section id="stages" class="stages" aria-labelledby="stages-heading">
+  <div class="container stages__inner">
+    <div class="stages__intro">
+      <h2 id="stages-heading" class="t-h2 stages__heading" data-reveal="fade" data-reveal-delay="0.4">Fukt i byggprocessen</h2>
+      <div class="stages__lead" data-reveal="fade" data-reveal-delay="0.5">
+        <p class="t-body-lg">
+          Fukt- och miljöfrågor måste beaktas under hela byggprocessen. Från projektering, entreprenad, förvaltning och till
+          rivning/återbruk.
+        </p>
+        <p class="t-body-lg">Kumlin-gruppen kan bistå dig genom hela byggprocessen.</p>
+      </div>
+    </div>
+
+    <ol role="list" class="stages__list" data-reveal="stagger" data-reveal-delay="0.6">
+      {
+        stages.map((stage) => (
+          <li class="stage-card">
+            <Image src={stage.image} alt="" class="stage-card__img" width={800} widths={[400, 800]} sizes="(max-width: 479px) 100vw, 400px" format="avif" />
+            <h3 class="t-h5 stage-card__title">
+              <span class="accent">{stage.number}</span> {stage.title}
+            </h3>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .stages {
+    position: relative;
+    background-color: var(--color-surface);
+  }
+  .stages__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+    padding-top: var(--pad-160);
+    padding-bottom: var(--pad-80);
+  }
+  .stages__intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+  }
+  .stages__heading {
+    color: var(--color-heading);
+  }
+  .stages__lead {
+    max-width: 880px;
+  }
+  .stages__lead p {
+    color: var(--color-text);
+  }
+  .stages__lead p + p {
+    margin-top: 1.5em;
+  }
+
+  .stages__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-16-12);
+    width: 100%;
+  }
+  .stage-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: stretch;
+    gap: var(--space-32-24);
+    width: 100%;
+    max-width: 25rem;
+    padding: var(--space-8-6) var(--space-8-6) var(--space-32-24);
+    border: 1px solid var(--color-border);
+    border-radius: 32px;
+    text-align: center;
+  }
+  .stage-card__img {
+    width: 100%;
+    height: 100%;
+    max-height: 240px;
+    border-radius: 24px;
+    object-fit: cover;
+  }
+  .stage-card__title {
+    color: var(--color-heading);
+  }
+
+  @media (max-width: 991px) {
+    .stages__inner {
+      gap: 48px;
+    }
+    .stage-card__title {
+      font-size: 24px;
+    }
+  }
+  @media (max-width: 767px) {
+    .stages__inner {
+      gap: 40px;
+    }
+    .stages__heading {
+      font-size: 32px;
+    }
+    .stage-card {
+      height: 100%;
+    }
+    .stage-card__img {
+      max-height: 200px;
+    }
+  }
+  @media (max-width: 479px) {
+    .stages__inner {
+      gap: 32px;
+    }
+    .stages__heading {
+      font-size: 24px;
+    }
+  }
+</style>

@@ -1,0 +1,196 @@
+---
+/**
+ * Contact form. Posts to the Cloudflare Pages Function in functions/api/contact.ts.
+ * Messages are kept verbatim from the Webflow site (note: success/error/wait
+ * strings were Norwegian there while the rest of the form is Swedish).
+ */
+const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY ?? '1x00000000000000000000AA'; // Cloudflare's always-pass test key
+
+const messages = {
+  submit: 'Skicka meddelande',
+  wait: 'Vent litt ...',
+  success: 'Takk! Innsendingen din er mottatt!',
+  error: 'Ups! Noe gikk galt under innsending av skjemaet.',
+};
+---
+
+<div class="contact-form" data-contact-form>
+  <form class="contact-form__form" action="/api/contact" method="post" data-wait={messages.wait}>
+    <div class="contact-form__col">
+      <div class="contact-form__field">
+        <label for="contact-name" class="t-body-lg contact-form__label">Ange ditt namn</label>
+        <input id="contact-name" name="name" type="text" class="contact-form__input" placeholder="Ditt namn" maxlength="256" autocomplete="name" required />
+      </div>
+      <div class="contact-form__field">
+        <label for="contact-phone" class="t-body-lg contact-form__label">Ange ditt nummer</label>
+        <input id="contact-phone" name="phone" type="tel" class="contact-form__input" placeholder="+46" maxlength="256" autocomplete="tel" required />
+      </div>
+      <div class="contact-form__field">
+        <label for="contact-email" class="t-body-lg contact-form__label">Ange din e-post</label>
+        <input id="contact-email" name="email" type="email" class="contact-form__input" placeholder="Din e-post" maxlength="256" autocomplete="email" required />
+      </div>
+    </div>
+
+    <div class="contact-form__col">
+      <div class="contact-form__field contact-form__field--message">
+        <label for="contact-message" class="t-body-lg contact-form__label">Hur kan vi hjälpa till?</label>
+        <textarea id="contact-message" name="message" class="contact-form__input contact-form__textarea" placeholder="Ditt meddelande" maxlength="5000" required></textarea>
+      </div>
+    </div>
+
+    <!-- Honeypot: hidden from people and assistive tech; bots tend to fill it. -->
+    <div class="contact-form__hp" aria-hidden="true">
+      <label for="contact-company">Företag</label>
+      <input id="contact-company" name="company" type="text" tabindex="-1" autocomplete="off" />
+    </div>
+
+    <div class="contact-form__actions">
+      <button type="submit" class="btn btn--primary contact-form__submit">{messages.submit}</button>
+    </div>
+
+    <!-- Invisible unless Cloudflare needs an interactive check. Own grid row, matching the spacing of Webflow's injected widget. -->
+    <div class="cf-turnstile contact-form__turnstile" data-sitekey={turnstileSiteKey} data-appearance="interaction-only" data-language="sv"></div>
+  </form>
+
+  <div class="contact-form__success" role="status" hidden>
+    <p class="t-body-lg">{messages.success}</p>
+  </div>
+  <div class="contact-form__error" role="alert" hidden>
+    <p class="t-body">{messages.error}</p>
+  </div>
+</div>
+
+<script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script>
+  import '../scripts/contact-form';
+</script>
+
+<style>
+  .contact-form {
+    padding: 40px 32px;
+    border: 1px solid var(--color-border);
+    border-radius: 32px;
+    background-color: var(--color-surface);
+  }
+  .contact-form__form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px 16px;
+  }
+  .contact-form__col {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .contact-form__field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    height: 100%;
+  }
+  .contact-form__label {
+    color: var(--color-heading);
+  }
+  .contact-form__input {
+    display: block;
+    width: 100%;
+    height: 56px;
+    padding: 16px 24px;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    background-color: var(--color-bg);
+    color: var(--color-heading);
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 150%;
+    vertical-align: middle;
+    transition: filter 0.3s;
+  }
+  .contact-form__input:hover {
+    filter: brightness(95%);
+  }
+  .contact-form__input:focus {
+    outline: 0;
+  }
+  .contact-form__input:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 0;
+  }
+  .contact-form__input::placeholder {
+    color: var(--color-placeholder);
+  }
+  .contact-form__textarea {
+    height: 100%;
+    overflow: auto;
+  }
+  .contact-form__hp {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+  .contact-form__actions {
+    grid-column: span 2;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .contact-form__turnstile {
+    grid-column: 1 / -1;
+  }
+  .contact-form__submit:disabled {
+    cursor: progress;
+  }
+
+  .contact-form__success {
+    padding: 88px 24px;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    background-color: var(--color-bg);
+    text-align: center;
+  }
+  .contact-form__success p {
+    color: var(--color-primary);
+  }
+  .contact-form__error {
+    margin-top: 16px;
+    padding: 8px 16px;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    background-color: var(--color-bg);
+  }
+  .contact-form__error p {
+    color: var(--color-heading);
+  }
+
+  @media (max-width: 991px) {
+    .contact-form {
+      padding: 32px 24px;
+    }
+    .contact-form__form {
+      row-gap: 32px;
+    }
+    .contact-form__col {
+      gap: 16px;
+    }
+  }
+  @media (max-width: 767px) {
+    .contact-form__form {
+      grid-template-columns: 1fr;
+      row-gap: 24px;
+    }
+    .contact-form__actions {
+      grid-column: auto;
+    }
+    .contact-form__textarea {
+      min-height: 180px;
+    }
+  }
+  @media (max-width: 479px) {
+    .contact-form {
+      padding: 24px 16px;
+    }
+  }
+</style>

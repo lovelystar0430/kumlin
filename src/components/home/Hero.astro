@@ -1,0 +1,176 @@
+---
+import { Image } from 'astro:assets';
+import heroImage from '../../assets/images/hero-facade.avif';
+---
+
+<section class="hero" aria-labelledby="hero-heading">
+  <div class="container hero__inner">
+    <div class="hero__content">
+      <div class="hero__text">
+        <h1 id="hero-heading" class="t-h1 hero__heading">Fuktsäkra och därmed hållbara byggnader</h1>
+        <p class="t-body-lg hero__lead">
+          – Ett gemensamt mål för bygg- och fastighetssektorn. Tillsammans skapar vi byggnader som håller över tid.
+        </p>
+      </div>
+      <div class="hero__buttons">
+        <a href="/kontakt" class="btn btn--light">Ta kontakt</a>
+        <a href="#services" class="btn btn--outline-light">Vad vi gör</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero__bg" aria-hidden="true">
+    <div class="hero__bg-shape"></div>
+    <Image
+      src={heroImage}
+      alt=""
+      class="hero__bg-img"
+      widths={[640, 960, heroImage.width]}
+      sizes="100vw"
+      format="avif"
+      loading="eager"
+      fetchpriority="high"
+    />
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    height: 98svh;
+    min-height: 880px;
+  }
+  .hero__inner {
+    height: 100%;
+    padding-block: var(--pad-240);
+  }
+  .hero__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: var(--space-40-28);
+    width: 70%;
+    max-width: 560px;
+    height: 100%;
+  }
+  .hero__text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .hero__heading {
+    color: var(--color-bg);
+  }
+  .hero__lead {
+    color: var(--color-on-primary-muted);
+  }
+  .hero__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .hero__bg-shape {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background-color: var(--color-primary);
+    clip-path: circle(52.5vw at 10%);
+  }
+  .hero__bg-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 100% 50%;
+  }
+
+  /* Entrance animations (from the original Webflow embed) */
+  @media (prefers-reduced-motion: no-preference) {
+    .hero__bg-shape {
+      transform: translateX(-100%);
+      animation: hero-slide-in 0.8s ease-out 0.2s forwards;
+    }
+    .hero__bg-img {
+      opacity: 0;
+      filter: grayscale(100%);
+      animation: hero-img-in 0.5s var(--ease-in-out-quad) 0.8s forwards;
+    }
+    .hero__heading,
+    .hero__lead,
+    .hero__buttons > * {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: hero-fade-up 0.5s ease-out forwards;
+    }
+    .hero__heading {
+      animation-delay: 0.8s;
+    }
+    .hero__lead {
+      animation-delay: 0.9s;
+    }
+    .hero__buttons > :nth-child(1) {
+      animation-delay: 1s;
+    }
+    .hero__buttons > :nth-child(2) {
+      animation-delay: 1.2s;
+    }
+  }
+
+  @keyframes hero-fade-up {
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes hero-slide-in {
+    to {
+      transform: none;
+    }
+  }
+  @keyframes hero-img-in {
+    to {
+      opacity: 1;
+      filter: grayscale(0%);
+    }
+  }
+
+  @media (max-width: 991px) {
+    .hero {
+      height: auto;
+      min-height: auto;
+    }
+    .hero__bg-shape {
+      clip-path: circle(54vw at 10%);
+    }
+  }
+  @media (max-width: 767px) {
+    .hero__bg-shape {
+      clip-path: ellipse(70% 80% at 3%);
+      height: 110%;
+    }
+    .hero__bg-img {
+      object-position: 50% 50%;
+    }
+  }
+  @media (max-width: 479px) {
+    .hero__bg-shape {
+      clip-path: ellipse(75% 80% at 3%);
+    }
+    .hero__heading {
+      font-size: 32px;
+    }
+  }
+</style>

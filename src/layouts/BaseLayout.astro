@@ -1,0 +1,76 @@
+---
+import '../styles/global.css';
+import SvgSprite from '../components/SvgSprite.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { SITE } from '../data/site';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Header colour scheme: 'overlay' = light logo/links over the blue hero (home), 'default' = blue/dark on white. */
+  headerVariant?: 'overlay' | 'default';
+  /** JSON-LD object(s) for this page. */
+  structuredData?: Record<string, unknown>;
+  noindex?: boolean;
+}
+
+const { title, description, headerVariant = 'default', structuredData, noindex = false } = Astro.props;
+
+// "/" stays "/", every other path is emitted without a trailing slash (matches the indexed URLs).
+const canonical = new URL(Astro.url.pathname.replace(/(.)\/$/, '$1').replace(/\.html$/, ''), SITE.url).href;
+const ogImage = new URL('/og-image.png', SITE.url).href;
+---
+
+<!doctype html>
+<html lang={SITE.lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content={SITE.ogLocale} />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <link rel="preload" href="/fonts/raleway-var.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/open-sans-var.woff2" as="font" type="font/woff2" crossorigin />
+
+    <!-- Enables the scroll-reveal hidden states only when JS is running. -->
+    <script is:inline>document.documentElement.classList.add('js');</script>
+
+    {structuredData && <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />}
+
+    <!-- Umami analytics (same instance and site ID as the Webflow site). data-domains skips preview deployments. -->
+    <script is:inline defer src="https://analytics.nettsidetjenester.no/script.js" data-website-id={SITE.umamiWebsiteId} data-domains="kumlin.no"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Hoppa till innehållet</a>
+    <SvgSprite />
+    <div class="page">
+      <SiteHeader variant={headerVariant} />
+      <main id="main" tabindex="-1">
+        <slot />
+      </main>
+      <SiteFooter />
+    </div>
+    <script>
+      import '../scripts/reveal';
+    </script>
+  </body>
+</html>

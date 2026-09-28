@@ -1,0 +1,157 @@
+---
+import { Image } from 'astro:assets';
+import icon1 from '../../assets/icons/service-1.svg';
+import icon2 from '../../assets/icons/service-2.svg';
+import icon3 from '../../assets/icons/service-3.svg';
+import icon4 from '../../assets/icons/service-4.svg';
+import icon5 from '../../assets/icons/service-5.svg';
+import icon6 from '../../assets/icons/service-6.svg';
+import icon7 from '../../assets/icons/service-7.svg';
+import icon8 from '../../assets/icons/service-8.svg';
+import icon9 from '../../assets/icons/service-9.svg';
+
+const services = [
+  { title: 'Fukt- och inomhusmiljöutredningar', icon: icon1 },
+  { title: 'Lufttäthetsprovning', icon: icon2 },
+  { title: 'Fuktsakkunnig Uppdrag', icon: icon3 },
+  { title: 'Skyfallssimuleringar', icon: icon4 },
+  { title: 'Sakkunniga i tvister', icon: icon5 },
+  { title: 'Mätning och provtagning', icon: icon6 },
+  { title: 'Fukt- och värmeberäkningar', icon: icon7 },
+  { title: 'Utbildar och föreläser', icon: icon8 },
+  { title: 'Skyfallsbesiktningar', icon: icon9 },
+];
+---
+
+<section id="services" class="services" aria-labelledby="services-heading">
+  <div class="container services__inner">
+    <div class="services__intro">
+      <h2 id="services-heading" class="t-h2 services__heading" data-reveal="fade" data-reveal-delay="0.4">Våra tjänster</h2>
+      <p class="t-body-lg services__lead" data-reveal="fade" data-reveal-delay="0.5">
+        Vi besitter en bred kompetens inom speciellt fukt- och inomhusmiljö relaterade frågor, men kan även en del om mycket annat när
+        det gäller byggnader och projektgenomföring. Med många års erfarenhet har vi ett stort kontaktnät, kan inte vi hjälpa dig kan vi
+        nästan lova att någon i vår närhet kan.
+      </p>
+    </div>
+
+    <ul role="list" class="services__list" data-reveal="stagger" data-reveal-delay="0.6">
+      {
+        services.map((service) => (
+          <li class="service-card">
+            <Image src={service.icon} alt="" class="service-card__icon" width={140} height={140} />
+            <h3 class="t-h5 service-card__title">{service.title}</h3>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .services {
+    position: relative;
+    background-color: var(--color-surface);
+  }
+  .services__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+    padding-top: var(--pad-80);
+    padding-bottom: var(--pad-160);
+  }
+  .services__intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+  }
+  .services__heading {
+    color: var(--color-heading);
+  }
+  .services__lead {
+    max-width: 1000px;
+    color: var(--color-text);
+    text-wrap: balance;
+  }
+
+  .services__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .service-card {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 8px 24px 8px 8px;
+    border: 1px solid var(--color-border);
+    border-radius: 32px;
+    background-color: var(--color-bg);
+  }
+  .service-card__icon {
+    width: 100%;
+    max-width: 140px;
+    height: 100%;
+    padding: 20px;
+    border: 1px solid var(--color-border);
+    border-radius: 24px;
+    background-color: var(--color-surface);
+    object-fit: cover;
+  }
+  .service-card__title {
+    flex: 1;
+    color: var(--color-heading);
+    /* Original used word-break: break-all, which split words mid-way at some widths. */
+    overflow-wrap: anywhere;
+    text-wrap: balance;
+  }
+
+  @media (max-width: 991px) {
+    .services__inner {
+      gap: 56px;
+    }
+    .services__list {
+      display: flex;
+      flex-direction: column;
+    }
+    .service-card__icon {
+      max-width: 120px;
+    }
+    /* As in the original: normal wrapping here, so on phones long titles drop below the icon */
+    .service-card__title {
+      overflow-wrap: normal;
+    }
+  }
+  @media (max-width: 767px) {
+    .services__inner {
+      gap: 48px;
+    }
+    .service-card {
+      border-radius: 24px;
+    }
+    .service-card__icon {
+      max-width: 80px;
+      border-radius: 16px;
+    }
+    .service-card__title {
+      font-size: 18px;
+    }
+  }
+  @media (max-width: 479px) {
+    .services__inner {
+      gap: 32px;
+    }
+    .services__intro {
+      gap: 12px;
+    }
+    .service-card {
+      flex-wrap: wrap;
+      gap: 16px;
+      padding: 16px;
+    }
+    .service-card__title {
+      font-size: 16px;
+    }
+  }
+</style>

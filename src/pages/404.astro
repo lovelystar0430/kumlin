@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Sidan hittades inte (404) | Kumlin" description="Sidan du letar efter finns inte." noindex>
+  <section class="not-found" aria-labelledby="not-found-heading">
+    <div class="container not-found__inner">
+      <div class="not-found__text">
+        <h1 id="not-found-heading" class="t-h1 not-found__code">404</h1>
+        <p class="t-body-lg not-found__lead">Ups, siden du leter etter finnes ikke</p>
+      </div>
+      <a href="/" class="btn btn--primary">Gå hjem</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found__inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    min-height: 78vh;
+    padding-block: var(--pad-120);
+    text-align: center;
+  }
+  .not-found__text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .not-found__code {
+    color: var(--color-heading);
+    font-size: 260px;
+  }
+  .not-found__lead {
+    color: var(--color-text);
+  }
+
+  @media (max-width: 991px) {
+    .not-found__code {
+      font-size: 240px;
+    }
+  }
+  @media (max-width: 767px) {
+    .not-found__inner {
+      gap: 32px;
+    }
+    .not-found__code {
+      font-size: 200px;
+    }
+  }
+  @media (max-width: 479px) {
+    .not-found__inner {
+      gap: 24px;
+    }
+    .not-found__code {
+      font-size: 120px;
+    }
+  }
+</style>

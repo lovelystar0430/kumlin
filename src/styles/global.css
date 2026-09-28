@@ -1,0 +1,378 @@
+/*
+ * Global styles: fonts, design tokens, base element styles, typography and
+ * button utilities. Component-specific layout lives in each component's
+ * scoped <style> block.
+ *
+ * Breakpoints (desktop-first, identical to the original Webflow build):
+ *   ≤ 991px  tablet       (the nav collapses here)
+ *   ≤ 767px  mobile landscape
+ *   ≤ 479px  mobile portrait
+ */
+
+/* ---------- Fonts (self-hosted variable fonts, same files as the Webflow site) ---------- */
+@font-face {
+  font-family: 'Raleway';
+  src: url('/fonts/raleway-var.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Raleway';
+  src: url('/fonts/raleway-italic-var.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Open Sans';
+  src: url('/fonts/open-sans-var.woff2') format('woff2');
+  font-weight: 300 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Open Sans';
+  src: url('/fonts/open-sans-italic-var.woff2') format('woff2');
+  font-weight: 300 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ---------- Tokens ---------- */
+:root {
+  /* Colours — Webflow variable name in comments */
+  --color-bg: #fafafa; /* dr-white */
+  --color-primary: #375eba; /* blasphemous-blue */
+  --color-primary-hover: #426dd2; /* savoy-blue */
+  --color-surface: #ebeff7; /* first-snow */
+  --color-border: #c7d0e2; /* apresski */
+  --color-on-primary-muted: #c7d1e8; /* misty-mountains */
+  --color-heading: #3c3e42; /* tamahagane */
+  --color-text: #5a5d62; /* blindfolded */
+  --color-placeholder: #9ba1af; /* wet-asphalt */
+  --color-black: #000;
+
+  --font-display: 'Raleway', Arial, sans-serif;
+  --font-body: 'Open Sans', Arial, sans-serif;
+
+  /* Fluid type: linear from 320px (20rem) to 1440px (90rem) viewport */
+  --fs-h1: clamp(2.375rem, 2.0536rem + 1.6071vw, 3.5rem);
+  --fs-h2: clamp(2.125rem, 1.875rem + 1.25vw, 3rem);
+  --fs-h3: clamp(1.875rem, 1.6964rem + 0.8929vw, 2.5rem);
+  --fs-h4: clamp(1.5rem, 1.3571rem + 0.7143vw, 2rem);
+  --fs-h5: clamp(1.25rem, 1.1786rem + 0.3571vw, 1.5rem);
+  --fs-body-lg: clamp(1rem, 0.9286rem + 0.3571vw, 1.25rem);
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+
+  /* Fluid spacing (min → max) */
+  --space-8-6: clamp(0.375rem, 0.339rem + 0.179vw, 0.5rem);
+  --space-16-12: clamp(0.75rem, 0.679rem + 0.357vw, 1rem);
+  --space-24-16: clamp(1rem, 0.857rem + 0.714vw, 1.5rem);
+  --space-32-24: clamp(1.5rem, 1.357rem + 0.714vw, 2rem);
+  --space-40-28: clamp(1.75rem, 1.536rem + 1.071vw, 2.5rem);
+  --space-48-32: clamp(2rem, 1.714rem + 1.429vw, 3rem);
+  --space-56-36: clamp(2.25rem, 1.893rem + 1.786vw, 3.5rem);
+  --space-64-40: clamp(2.5rem, 2.071rem + 2.143vw, 4rem);
+  --space-80-48: clamp(3rem, 2.429rem + 2.857vw, 5rem);
+
+  /* Section vertical padding */
+  --pad-24: clamp(0.75rem, 0.536rem + 1.071vw, 1.5rem);
+  --pad-32: clamp(1rem, 0.714rem + 1.429vw, 2rem);
+  --pad-80: clamp(2.5rem, 1.786rem + 3.571vw, 5rem);
+  --pad-120: clamp(3.75rem, 2.679rem + 5.357vw, 7.5rem);
+  --pad-160: clamp(5rem, 3.571rem + 7.143vw, 10rem);
+  --pad-240: clamp(7.5rem, 5.357rem + 10.714vw, 15rem);
+
+  --container-max: 90rem;
+  --container-pad: clamp(1rem, 0.321rem + 3.571vw, 3rem);
+  --radius-32-20: clamp(1.25rem, 1.036rem + 1.071vw, 2rem);
+
+  /* GSAP ease equivalents used by the original scroll animations */
+  --ease-power1-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-power2-out: cubic-bezier(0.215, 0.61, 0.355, 1);
+  --ease-in-out-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  background-color: var(--color-bg);
+  color: #333;
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 20px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+blockquote {
+  margin: 0;
+}
+
+img,
+svg {
+  vertical-align: middle;
+  max-width: 100%;
+}
+
+img {
+  display: inline-block;
+  border: 0;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+  margin: 0;
+}
+
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Webflow removed all focus outlines on form fields; keep a visible focus ring for keyboard users. */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 2000;
+  padding: 0.75rem 1.25rem;
+  border-radius: 999px;
+  background: var(--color-bg);
+  color: var(--color-primary);
+  font: 600 1rem/1.5 var(--font-body);
+  transform: translateY(-200%);
+}
+.skip-link:focus {
+  transform: none;
+}
+
+/* ---------- Layout ---------- */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+.page {
+  overflow: clip;
+}
+
+/* ---------- Typography utilities ---------- */
+.t-h1,
+.t-h2,
+.t-h3,
+.t-h4,
+.t-h5 {
+  font-family: var(--font-display);
+  color: var(--color-black);
+  line-height: 130%;
+}
+.t-h1 {
+  font-size: var(--fs-h1);
+  font-weight: 700;
+  line-height: 120%;
+  text-transform: uppercase;
+}
+.t-h2 {
+  font-size: var(--fs-h2);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.t-h3 {
+  font-size: var(--fs-h3);
+  font-weight: 600;
+}
+.t-h4 {
+  font-size: var(--fs-h4);
+  font-weight: 600;
+}
+.t-h5 {
+  font-size: var(--fs-h5);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.t-body-lg,
+.t-body,
+.t-label,
+.t-small {
+  font-family: var(--font-body);
+  color: var(--color-black);
+  line-height: 150%;
+}
+.t-body-lg {
+  font-size: var(--fs-body-lg);
+  font-weight: 600;
+}
+.t-body {
+  font-size: var(--fs-body);
+  font-weight: 400;
+}
+.t-label {
+  font-size: var(--fs-body);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.t-small {
+  font-size: var(--fs-small);
+  font-weight: 600;
+  line-height: 140%;
+}
+
+/* Accent used for "{01/}" style prefixes in the original (colours the number blue) */
+.accent {
+  color: var(--color-primary);
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  max-width: 100%;
+  padding: 16px 40px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 150%;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    border-color 0.3s,
+    color 0.3s;
+}
+/* The primary/light variants have no border in the original — collapse it so sizes match. */
+.btn--primary,
+.btn--light {
+  border-width: 0;
+}
+.btn--primary {
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+}
+.btn--primary:hover {
+  background-color: var(--color-primary-hover);
+}
+.btn--outline {
+  border-color: var(--color-primary);
+  background-color: transparent;
+  color: var(--color-primary-hover);
+}
+.btn--outline:hover {
+  border-color: var(--color-primary-hover);
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+}
+.btn--light {
+  background-color: var(--color-bg);
+  color: var(--color-primary);
+}
+.btn--light:hover {
+  background-color: var(--color-primary-hover);
+  color: var(--color-bg);
+}
+.btn--outline-light {
+  border-color: var(--color-bg);
+  background-color: transparent;
+  color: var(--color-bg);
+}
+.btn--outline-light:hover {
+  border-color: var(--color-primary-hover);
+}
+
+@media (max-width: 767px) {
+  .btn {
+    padding: 14px 32px;
+  }
+}
+
+/* ---------- Scroll reveal ----------
+ * Replaces the GSAP/ScrollTrigger script. Elements are only hidden once JS has
+ * run (html.js), so content is never invisible without JavaScript, and never
+ * hidden at all for users who prefer reduced motion. See src/scripts/reveal.ts.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-reveal='fade'],
+  .js [data-reveal='stagger'] > * {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  .js [data-reveal='grayscale'] {
+    opacity: 0;
+    filter: grayscale(100%);
+    transform: scale(0.98);
+  }
+  .js [data-reveal].is-revealed,
+  .js [data-reveal='stagger'].is-revealed > * {
+    opacity: 1;
+    filter: none;
+    transform: none;
+    transition-property: opacity, transform, filter;
+    transition-duration: 0.5s;
+    transition-timing-function: var(--ease-power1-out);
+    transition-delay: var(--reveal-delay, 0s);
+  }
+  .js [data-reveal='stagger'].is-revealed > * {
+    transition-delay: calc(var(--reveal-delay, 0s) + var(--stagger-index, 0) * 0.1s);
+  }
+  /* Decorative backdrop sliding in from the right (FuktCentrum panel). The child moves, not the
+     observed element: a transformed element outside an overflow:hidden parent never intersects. */
+  .js [data-reveal='slide'] > * {
+    transform: translateX(100%);
+  }
+  .js [data-reveal='slide'].is-revealed > * {
+    transform: none;
+    transition: transform 0.8s var(--ease-power2-out);
+  }
+}

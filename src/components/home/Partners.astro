@@ -1,0 +1,246 @@
+---
+import { Image } from 'astro:assets';
+import fuktcentrumLogo from '../../assets/images/fuktcentrum-logo.avif';
+import swesiaqBadge from '../../assets/images/swesiaq-badge-2026.avif';
+---
+
+<!-- FuktCentrum -->
+<section id="support" class="support" aria-labelledby="support-heading">
+  <div class="container support__outer">
+    <div class="support__panel">
+      <!-- This wrapper is load-bearing: its shrink-to-fit width sizes the heading column exactly like the original. -->
+      <div class="support__card">
+        <div class="support__content">
+          <h2 id="support-heading" class="t-h3 support__heading" data-reveal="fade" data-reveal-delay="0.4">
+            Vi stödjer FuktCentrum i arbetet att förebygga fuktproblem och skapa hälsosamma innemiljöer
+          </h2>
+          <div data-reveal="fade" data-reveal-delay="0.5">
+            <a href="https://www.fuktcentrum.lth.se/" class="btn btn--outline">
+              Besök webbplatsen<span class="sr-only"> för FuktCentrum</span>
+            </a>
+          </div>
+        </div>
+        <div class="support__logo" data-reveal="fade" data-reveal-delay="0.7">
+          <Image src={fuktcentrumLogo} alt="Fuktcentrum, LTH Lunds tekniska högskola" class="support__logo-img" widths={[480, 960]} sizes="480px" format="avif" />
+        </div>
+      </div>
+      <div class="support__bg" aria-hidden="true" data-reveal="slide">
+        <div class="support__bg-shape"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SWESIAQ -->
+<section class="swesiaq" aria-labelledby="swesiaq-heading">
+  <div class="container swesiaq__outer">
+    <div class="swesiaq__panel" data-reveal="fade" data-reveal-delay="0.4">
+      <div class="swesiaq__content">
+        <h2 id="swesiaq-heading" class="t-h3 swesiaq__heading">
+          Vi stödjer SWESIAQ; en oberoende organisation för inomhusmiljöfrågor som förmedlar och sprider tvär vetenskapliga kunskaper
+          där teori och praktik förenas.
+        </h2>
+        <a href="https://swesiaq.se/" target="_blank" rel="noopener" class="btn btn--outline">
+          Besök webbplatsen<span class="sr-only"> för SWESIAQ (öppnas i ny flik)</span>
+        </a>
+      </div>
+      <Image
+        src={swesiaqBadge}
+        alt="SWESIAQ stödföretag 2026"
+        class="swesiaq__badge"
+        widths={[220, 420, 840]}
+        sizes="(max-width: 767px) 220px, 420px"
+        format="avif"
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ---------- FuktCentrum ---------- */
+  .support {
+    position: relative;
+  }
+  .support__outer {
+    padding-block: var(--pad-80);
+  }
+  .support__panel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 640px;
+    padding-left: var(--space-48-32);
+    overflow: hidden;
+    border-radius: 32px;
+  }
+  .support__card {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 64px;
+    height: 100%;
+  }
+  .support__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    width: 80%;
+    max-width: 700px;
+    height: 100%;
+  }
+  .support__heading {
+    color: var(--color-heading);
+    text-wrap: balance;
+  }
+  .support__logo {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    height: 100%;
+  }
+  .support__logo-img {
+    width: 100%;
+    max-width: 480px;
+    height: 100%;
+    max-height: 130px;
+    object-fit: contain;
+  }
+  .support__bg {
+    position: absolute;
+    inset: 0;
+    background-color: var(--color-surface);
+  }
+  .support__bg-shape {
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-primary);
+    clip-path: circle(60% at 100%);
+  }
+
+  @media (max-width: 991px) {
+    .support__content {
+      max-width: 470px;
+    }
+    .support__bg-shape {
+      clip-path: ellipse(50% 60% at 100%);
+    }
+    .support__logo {
+      max-width: 320px;
+    }
+    .support__logo-img {
+      max-width: none;
+    }
+  }
+  @media (max-width: 767px) {
+    .support__card {
+      gap: 32px;
+    }
+    .support__content {
+      gap: 24px;
+    }
+  }
+  @media (max-width: 479px) {
+    .support__panel {
+      height: 560px;
+      padding-top: var(--space-24-16);
+    }
+    .support__card {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 120px;
+    }
+    .support__content {
+      position: relative;
+      z-index: 6;
+      width: auto;
+      max-width: none;
+      padding: 8px 8px 0;
+    }
+    .support__heading {
+      font-size: var(--fs-h4);
+    }
+    .support__bg-shape {
+      clip-path: ellipse(95% 62vw at 100% 100%);
+    }
+    .support__logo {
+      justify-content: flex-end;
+      align-items: flex-end;
+      max-width: none;
+    }
+    .support__logo-img {
+      max-width: 70vw;
+      mix-blend-mode: difference;
+    }
+  }
+
+  /* ---------- SWESIAQ ---------- */
+  .swesiaq {
+    position: relative;
+  }
+  .swesiaq__outer {
+    padding-top: var(--pad-32);
+    padding-bottom: var(--pad-80);
+  }
+  .swesiaq__panel {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 64px 48px;
+    border: 1px solid var(--color-border);
+    border-radius: 32px;
+    background-color: var(--color-surface);
+  }
+  .swesiaq__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: clamp(1.25rem, 0.893rem + 1.786vw, 2.5rem);
+    max-width: 794px;
+  }
+  .swesiaq__heading {
+    color: var(--color-heading);
+    text-wrap: pretty;
+  }
+  .swesiaq__badge {
+    width: 100%;
+    max-width: 420px;
+    height: 100%;
+    max-height: 323px;
+    object-fit: contain;
+  }
+
+  @media (max-width: 991px) {
+    .swesiaq__panel {
+      padding: 54px 32px;
+    }
+    .swesiaq__heading {
+      font-size: var(--fs-h4);
+    }
+  }
+  @media (max-width: 767px) {
+    .swesiaq__panel {
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 40px 24px;
+    }
+    .swesiaq__heading {
+      font-size: var(--fs-h5);
+    }
+    .swesiaq__badge {
+      max-width: 220px;
+    }
+  }
+  @media (max-width: 479px) {
+    .swesiaq__panel {
+      padding: 24px 18px;
+    }
+    .swesiaq__heading {
+      font-size: var(--fs-h4);
+    }
+  }
+</style>

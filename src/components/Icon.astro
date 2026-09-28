@@ -1,0 +1,14 @@
+---
+interface Props extends astroHTML.JSX.SVGAttributes {
+  name: 'logo' | 'phone' | 'mail' | 'file';
+  /** Accessible name. Omit for decorative icons (the default). */
+  label?: string;
+}
+
+// `...rest` forwards `class` and the parent's scoped-style attribute, so parents can size icons from their own <style>.
+const { name, label, ...rest } = Astro.props;
+---
+
+<svg {...rest} role={label ? 'img' : undefined} aria-label={label} aria-hidden={label ? undefined : 'true'} focusable="false">
+  <use href={`#icon-${name}`}></use>
+</svg>

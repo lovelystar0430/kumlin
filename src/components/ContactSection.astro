@@ -1,0 +1,91 @@
+---
+import ContactForm from './ContactForm.astro';
+import { SITE } from '../data/site';
+
+interface Props {
+  heading: string;
+  /** Use 'h1' when the contact section is the page's main content (/kontakt). */
+  headingLevel?: 'h1' | 'h2';
+}
+
+const { heading, headingLevel = 'h2' } = Astro.props;
+const HeadingTag = headingLevel;
+---
+
+<section id="contact" class="contact" aria-labelledby="contact-heading">
+  <div class="container contact__inner">
+    <div class="contact__intro">
+      <HeadingTag id="contact-heading" class="t-h2 contact__heading" data-reveal="fade" data-reveal-delay="0.4">{heading}</HeadingTag>
+      <p class="t-body-lg contact__lead" data-reveal="fade" data-reveal-delay="0.5">
+        Vänligen fyll i fälten eller kontakta oss via telefon eller e-post
+      </p>
+    </div>
+
+    <div data-reveal="fade" data-reveal-delay="0.6">
+      <ContactForm />
+    </div>
+
+    <div class="contact__map" data-reveal="fade" data-reveal-delay="0.5">
+      <iframe
+        src={SITE.mapEmbedUrl}
+        title={`Karta: ${SITE.address}`}
+        width="100%"
+        height="450"
+        style="border:0"
+        allowfullscreen
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact {
+    position: relative;
+  }
+  .contact__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+    padding-top: var(--pad-160);
+    padding-bottom: var(--pad-120);
+  }
+  .contact__intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+  }
+  .contact__heading {
+    color: var(--color-heading);
+  }
+  .contact__lead {
+    color: var(--color-text);
+  }
+  .contact__map {
+    height: 440px;
+    overflow: hidden;
+    border-radius: 32px;
+  }
+  .contact__map iframe {
+    display: block;
+  }
+
+  @media (max-width: 991px) {
+    .contact__inner {
+      gap: 48px;
+    }
+    .contact__map {
+      height: 380px;
+    }
+  }
+  @media (max-width: 767px) {
+    .contact__inner {
+      gap: 24px;
+    }
+    .contact__map {
+      height: 240px;
+    }
+  }
+</style>

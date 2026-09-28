@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/home/Hero.astro';
+import News from '../components/home/News.astro';
+import About from '../components/home/About.astro';
+import Sustainability from '../components/home/Sustainability.astro';
+import Stages from '../components/home/Stages.astro';
+import Services from '../components/home/Services.astro';
+import MoistureCallout from '../components/home/MoistureCallout.astro';
+import Partners from '../components/home/Partners.astro';
+import ArticleList from '../components/ArticleList.astro';
+import ContactSection from '../components/ContactSection.astro';
+import { PEOPLE, SITE } from '../data/site';
+
+const { anders, elin } = PEOPLE;
+
+// Carried over from the Webflow page (its "url" was relative; now absolute).
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Fuktsäkra och därmed hållbara byggnader – Ett gemensamt mål för bygg- och fastighetssektorn',
+  description: 'Tillsammans skapar vi byggnader som håller över tid genom fuktsäkerhet och byggnadsfysik',
+  url: `${SITE.url}/`,
+  inLanguage: SITE.lang,
+  about: {
+    '@type': 'Organization',
+    name: SITE.name,
+    description:
+      'Vi arbetar med fuktsäkerhet och byggnadsfysik – områden där små detaljer gör stor skillnad, och där de största problemen ofta börjar i det osynliga.',
+    url: SITE.url,
+    telephone: [elin.phone, anders.phone],
+    email: [elin.email, anders.email],
+    contactPoint: [
+      { '@type': 'ContactPoint', telephone: elin.phone, contactType: 'customer service', name: 'Elin' },
+      { '@type': 'ContactPoint', telephone: anders.phone, contactType: 'customer service', name: 'Anders' },
+    ],
+    sameAs: ['https://www.fuktcentrum.lth.se/', 'https://swesiaq.se/'],
+    member: [
+      { '@type': 'Person', name: elin.name, telephone: elin.phone, email: elin.email },
+      { '@type': 'Person', name: anders.name, telephone: anders.phone, email: anders.email },
+    ],
+  },
+};
+---
+
+<BaseLayout
+  title="Fuktsäkerhet & Byggnadsfysik | Kumlin"
+  description="Fuktsäkra och hållbara byggnader genom expertis inom fukt- och byggnadsfysik. Förebygger tekniska och ekonomiska risker med systematisk analys."
+  headerVariant="overlay"
+  structuredData={structuredData}
+>
+  <Hero />
+  <News />
+  <About />
+  <Sustainability />
+  <Stages />
+  <Services />
+  <MoistureCallout />
+  <ArticleList heading="Senaste artiklar" limit={3} />
+  <Partners />
+  <ContactSection heading="Kontakt oss" />
+</BaseLayout>

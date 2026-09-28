@@ -1,0 +1,15 @@
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# Hashed build assets and self-hosted fonts never change — cache for a year
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Keep the staging copy on *.pages.dev out of search results (the real site is kumlin.no)
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex

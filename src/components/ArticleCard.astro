@@ -1,0 +1,112 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Icon from './Icon.astro';
+
+interface Props {
+  article: CollectionEntry<'articles'>['data'];
+}
+
+const { title, summary, authors, year, pdf } = Astro.props.article;
+---
+
+<article class="article-card">
+  <div class="article-card__content">
+    <div class="article-card__text">
+      <h3 class="t-h5 article-card__title">{title}</h3>
+      <p class="t-body article-card__summary">{summary}</p>
+    </div>
+    <a href={pdf} target="_blank" rel="noopener" class="article-card__link">
+      <span class="t-label">Läs artikel<span class="sr-only">: {title} (PDF, öppnas i ny flik)</span></span>
+      <Icon name="file" class="article-card__icon" />
+    </a>
+  </div>
+  <p class="article-card__meta">
+    <span>{authors}</span>
+    <span class="article-card__divider" aria-hidden="true"></span>
+    <time datetime={String(year)}>{year}</time>
+  </p>
+</article>
+
+<style>
+  .article-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    width: 100%;
+    min-width: 200px;
+    height: 100%;
+    padding: 32px 24px;
+    border: 1px solid var(--color-border);
+    border-radius: 32px;
+    background-color: var(--color-surface);
+  }
+  .article-card__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .article-card__text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .article-card__title {
+    /* Original used word-break: break-all, which split words mid-way ("KLIM / ATANPASSNING"). */
+    overflow-wrap: anywhere;
+    text-wrap: pretty;
+  }
+  .article-card__summary {
+    color: var(--color-text);
+  }
+  .article-card__link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .article-card__link:hover {
+    color: var(--color-heading);
+  }
+  .article-card__icon {
+    width: 24px;
+    height: 24px;
+  }
+  /* The tag text had no type class in Webflow, so it inherited the body default (Arial 14/20). Kept for fidelity. */
+  .article-card__meta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border: 1px solid var(--color-border);
+    border-radius: 24px;
+    font-family: Arial, sans-serif;
+  }
+  .article-card__divider {
+    flex: none;
+    align-self: stretch;
+    width: 1px;
+    background-color: var(--color-border);
+  }
+
+  @media (max-width: 991px) {
+    .article-card {
+      padding: 24px;
+    }
+  }
+  @media (max-width: 479px) {
+    .article-card {
+      padding: 16px;
+      border-radius: 24px;
+    }
+    .article-card__meta {
+      border-radius: 16px;
+    }
+  }
+</style>

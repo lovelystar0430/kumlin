@@ -1,0 +1,11 @@
+# Cloudflare Pages redirects. Host-level rules (www → apex, http → https) are
+# configured on the zone, not here — see README "DNS cutover".
+
+# Recreated from Webflow's 301 settings (not visible in the HTML — found by probing the live site)
+/articles      /artikler     301
+/contact       /kontakt      301
+
+# Legacy URLs from the pre-Webflow site, found in the Wayback Machine (they currently 404)
+/hem-1         /             301
+/om            /om-oss       301
+/tjenester     /#services    301

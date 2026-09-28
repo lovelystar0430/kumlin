@@ -1,0 +1,108 @@
+---
+import { getCollection } from 'astro:content';
+import ArticleCard from './ArticleCard.astro';
+
+interface Props {
+  heading: string;
+  /** Show only the first N articles (home page teaser). */
+  limit?: number;
+  /** 'teaser' adds the "Se mer" button; 'page' is the full /artikler page with extra top padding and an <h1>. */
+  variant?: 'teaser' | 'page';
+}
+
+const { heading, limit, variant = 'teaser' } = Astro.props;
+const isPage = variant === 'page';
+
+const articles = (await getCollection('articles')).sort((a, b) => a.data.order - b.data.order).slice(0, limit);
+const HeadingTag = isPage ? 'h1' : 'h2';
+---
+
+<section id="article" class:list={['articles', { 'articles--page': isPage }]} aria-labelledby="articles-heading">
+  <div class="container articles__inner">
+    <HeadingTag id="articles-heading" class="t-h2 articles__heading" data-reveal="fade" data-reveal-delay="0.4">{heading}</HeadingTag>
+
+    <ul role="list" class="articles__list" data-reveal="stagger" data-reveal-delay="0.5">
+      {
+        articles.map((entry) => (
+          <li class="articles__item">
+            <ArticleCard article={entry.data} />
+          </li>
+        ))
+      }
+    </ul>
+
+    {
+      !isPage && (
+        <div data-reveal="fade" data-reveal-delay="0.5">
+          <a href="/artikler" class="btn btn--outline">Se mer</a>
+        </div>
+      )
+    }
+  </div>
+</section>
+
+<style>
+  .articles {
+    position: relative;
+  }
+  .articles__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 64px;
+    padding-block: var(--pad-80);
+  }
+  .articles--page .articles__inner {
+    padding-top: var(--pad-160);
+    /* Webflow rendered an empty button row here; its flex gap is kept so the page length matches. */
+    padding-bottom: calc(var(--pad-80) + 64px);
+  }
+  .articles__heading {
+    color: var(--color-heading);
+    text-align: center;
+  }
+  .articles__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    width: 100%;
+  }
+  .articles__item {
+    display: flex;
+    min-width: 0;
+  }
+
+  @media (max-width: 991px) {
+    .articles__inner {
+      gap: 48px;
+    }
+    .articles--page .articles__inner {
+      padding-bottom: calc(var(--pad-80) + 48px);
+    }
+    .articles__list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+    .articles__item {
+      width: 100%;
+    }
+  }
+  @media (max-width: 767px) {
+    .articles__list {
+      display: grid;
+      grid-template-columns: 1fr;
+      justify-items: center;
+      align-items: start;
+    }
+  }
+  @media (max-width: 479px) {
+    .articles__inner {
+      gap: 32px;
+    }
+    .articles--page .articles__inner {
+      padding-bottom: calc(var(--pad-80) + 32px);
+    }
+  }
+</style>
